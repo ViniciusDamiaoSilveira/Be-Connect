@@ -1,4 +1,4 @@
-# MotBOX
+# Be Connect
 TCC desenvolvido durante meu período de faculdade no IFSP - Instituto Federal de São Paulo (02/2022 - 12/2024).
 
 Tema: Rede social de diferentes tipos entretenimentos.
