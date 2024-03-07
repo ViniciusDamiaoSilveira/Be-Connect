@@ -1,0 +1,7 @@
+Tw Merge
+
+Tailwind CSS
+
+React Router Dom
+
+Lucide 

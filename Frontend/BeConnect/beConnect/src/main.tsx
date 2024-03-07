@@ -5,17 +5,31 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
-import { Login } from './Login';
+import Home from './pages/Home';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login.Root/>
+    element: <Home/>,
+  },
+  {
+    path: "/Series",
+    element: <Home/>,
+  },
+  {
+    path: "/Games",
+    element: <Home/>,
+  },
+  {
+    path: "/Books",
+    element: <Home/>,
   },
 ]);
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-        <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )

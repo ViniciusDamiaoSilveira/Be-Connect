@@ -1,11 +1,35 @@
-// tailwind.config.js
-const { withTV } = require('tailwind-variants/transformer');
- 
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
-module.exports = withTV({
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+export default {
+  content: [
+    "./index.html",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/components/Mobile/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx}"
+  ],
   theme: {
-    extend: {}
+    colors: {
+      'black' : '#1F1F1F',
+      'gray' : '#2C2C2C',
+      'half-gray' : '#3A3A3A',
+      'light-gray' : '#6E6E6E',
+      'white' : '#FFFFFF',
+      'yellow' : '#FFBF15'
+    },
+    extend: {
+      spacing: {
+        '1' : '0.15rem',
+        '62' : '15.8rem',
+        '70' : '16.5rem',
+        '76' : '19rem',
+        '90' : '22rem'
+      }
+    }
   },
-  plugins: []
-});
+  plugins: [
+    plugin(function({ addVariant }) {
+      addVariant('current', '&.active')
+    })
+  ],
+}
