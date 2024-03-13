@@ -3,7 +3,7 @@ import Navigator from "./Navigator";
 
 export default function Aside() {
     return (
-        <div className="flex flex-col gap-8">
+        <div className="w-fit flex flex-col gap-8">
             <Navigator/>
             <ActiveCard/> 
         </div>

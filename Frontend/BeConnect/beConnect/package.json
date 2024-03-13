@@ -10,16 +10,22 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.12",
+    "axios": "^1.6.7",
     "localforage": "^1.10.0",
     "lucide-react": "^0.341.0",
     "match-sorter": "^6.3.4",
+    "primereact": "^10.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.22.1",
     "sort-by": "^0.0.2",
     "swiper": "^11.0.7",
-    "tailwind-merge": "^2.2.1"
+    "tailwind-merge": "^2.2.1",
+    "use-debounce": "^10.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",

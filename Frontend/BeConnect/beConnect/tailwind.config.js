@@ -15,7 +15,8 @@ export default {
       'half-gray' : '#3A3A3A',
       'light-gray' : '#6E6E6E',
       'white' : '#FFFFFF',
-      'yellow' : '#FFBF15'
+      'yellow' : '#FFBF15',
+      'dark-white' : '#D9D9D9'
     },
     extend: {
       spacing: {
