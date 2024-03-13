@@ -15,7 +15,6 @@ export default function ActiveCard() {
       const swiperContainer = swiperRef.current;
       const params = {
         navigation: true,
-        spaceBetween: 20,
         slidesPerView: 1,
         autoplay: {
           delay: 3500,
@@ -68,19 +67,19 @@ export default function ActiveCard() {
     return(
 
          <div className="w-70 h-auto items-center rounded-lg ml-8 mb-5 shadow-lg"> 
-         <swiper-container ref={swiperRef} init="false"> 
-            {listMovies.length > 0 && 
-              listMovies.map((movie) => 
-          
-                  <swiper-slide key={movie.id}>
-                      <div
-                      style={{ backgroundImage: `url(${imgURL + movie.poster_path})` }}
-                      className='w-70 h-96 bg-cover bg-no-repeat rounded-lg flex justify-center cursor-pointer items-end'> 
-                      </div>
-                  </swiper-slide>
-    
-              )}
-          </swiper-container>
+          <swiper-container ref={swiperRef} init="false"> 
+              {listMovies.length > 0 && 
+                listMovies.map((movie) => 
+            
+                    <swiper-slide key={movie.id}>
+                        <div
+                        style={{ backgroundImage: `url(${imgURL + movie.poster_path})` }}
+                        className='w-70 h-96 bg-cover bg-no-repeat rounded-lg flex justify-center cursor-pointer items-end'> 
+                        </div>
+                    </swiper-slide>
+      
+                )}
+            </swiper-container>
 
          
         </div>

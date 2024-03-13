@@ -14,7 +14,7 @@ export default function HeaderPC() {
             <div className={twMerge('gap-60', flex)}>
                 <img src={logo} className='h-12 ml-8 cursor-pointer'/>
 
-                <div className='w-72 flex items-center bg-gray rounded-md'>
+                <div className='w-90 flex items-center bg-gray rounded-md'>
                     <Input placeholder='Pesquisar...'/>
                     <Search size={20} color='#6E6E6E' className='ml-3'/>
                 </div>

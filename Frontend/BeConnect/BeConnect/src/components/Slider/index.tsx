@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react';
 // register Swiper custom elements
 register();
 
-const slide = 'h-44 rounded-md flex items-center bg-cover bg-no-repeat cursor-pointer text-white hover:text-yellow duration-300'
+const slide = 'h-44 ind rounded-md flex items-center bg-cover bg-no-repeat cursor-pointer text-white hover:text-yellow duration-300'
 
 export default function Slider() {
     const swiperRef = useRef(null);
@@ -48,7 +48,7 @@ export default function Slider() {
         //     </swiper-container>
         // </div>
 
-        <div className='w-9/12 mt-8 ml-8 lg:w-9/12 xl:w-[75%] overflow-x-hidden'>
+        <div className='w-9/12 mt-8 ml-8 lg:w-9/12 z-10 xl:w-[75%] overflow-x-hidden'>
             <swiper-container ref={swiperRef} init="false">
                 <swiper-slide>
                     <div className={slide}> 
