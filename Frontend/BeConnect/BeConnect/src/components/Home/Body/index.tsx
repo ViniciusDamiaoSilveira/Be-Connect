@@ -15,7 +15,6 @@ export default function Body() {
                     <span className="text-[#9A9A9A] cursor-pointer"> Amigos </span>
                     <span className="font-bold cursor-pointer"> Em alta </span>
                 </div>
-
             </div>
 
             <Post/>

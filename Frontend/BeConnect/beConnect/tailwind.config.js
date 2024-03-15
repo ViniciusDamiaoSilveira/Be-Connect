@@ -24,7 +24,11 @@ export default {
         '62' : '15.8rem',
         '70' : '16.5rem',
         '76' : '19rem',
+        '85' : '21rem',
         '90' : '22rem'
+      },
+      fontSize: {
+        '3.5xl' : '2rem' 
       }
     }
   },

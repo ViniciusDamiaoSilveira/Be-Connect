@@ -2,12 +2,12 @@ import { Heart, Share2 } from 'lucide-react';
 import { Rating } from 'primereact/rating';
 
 interface PostProps {
-    name: string,
-    entertainment: string,
-    type_entertainment: string,
-    rating: number,
-    text: string,
-    likes: number
+    name?: string,
+    entertainment?: string,
+    type_entertainment?: string,
+    rating?: number,
+    text?: string,
+    likes?: number
 }
 
 export default function Post( props : PostProps) {

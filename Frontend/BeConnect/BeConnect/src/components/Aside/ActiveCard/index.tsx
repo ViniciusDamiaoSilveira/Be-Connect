@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useRef, useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import { register } from 'swiper/element/bundle';
 
 const tmdbURL = import.meta.env.VITE_TMDB_API
@@ -38,7 +39,6 @@ export default function ActiveCard() {
       swiperContainer.initialize();
     }, []);
 
-
   const [listMovies, setlistMovies] = useState<Array<any>>([])
 
   function randomPage() {
@@ -53,6 +53,7 @@ export default function ActiveCard() {
             'Authorization' : 'Bearer ' + bearer,
           }
         })
+      
       setlistMovies(response.data.results)
       
     } catch (error) {
@@ -66,22 +67,19 @@ export default function ActiveCard() {
 
     return(
 
-         <div className="w-70 h-auto items-center rounded-lg ml-8 mb-5 shadow-lg"> 
+        <div className="w-70 h-auto items-center rounded-lg ml-8 mb-5 shadow-lg"> 
           <swiper-container ref={swiperRef} init="false"> 
-              {listMovies.length > 0 && 
+            {
+              listMovies.length > 0 && 
                 listMovies.map((movie) => 
-            
-                    <swiper-slide key={movie.id}>
-                        <div
-                        style={{ backgroundImage: `url(${imgURL + movie.poster_path})` }}
-                        className='w-70 h-96 bg-cover bg-no-repeat rounded-lg flex justify-center cursor-pointer items-end'> 
-                        </div>
-                    </swiper-slide>
-      
-                )}
+                  <swiper-slide key={movie.id}>
+                      <NavLink to={'/Movie/' + movie.id}
+                      style={{ backgroundImage: `url(${imgURL + movie.poster_path})` }}
+                      className='w-70 h-96 bg-cover bg-no-repeat rounded-lg flex justify-center cursor-pointer items-end'> 
+                      </NavLink>
+                  </swiper-slide>
+            )}
             </swiper-container>
-
-         
         </div>
         
     )

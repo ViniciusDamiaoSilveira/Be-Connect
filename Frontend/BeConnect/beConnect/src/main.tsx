@@ -6,6 +6,16 @@ import {
 } from "react-router-dom";
 import './index.css'
 import Home from './pages/Home';
+import Movie from './pages/Movie';
+
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      'swiper-container': any,
+      'swiper-slide': any,
+    }
+  }
+}
 
 
 const router = createBrowserRouter([
@@ -25,6 +35,10 @@ const router = createBrowserRouter([
     path: "/Books",
     element: <Home/>,
   },
+  {
+    path: '/Movie/:id',
+    element: <Movie/>
+  }
 ]);
 
 

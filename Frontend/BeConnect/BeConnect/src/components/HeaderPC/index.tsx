@@ -1,7 +1,7 @@
 import { Bell, Search, Users } from 'lucide-react'
 import logo from '../../assets/Logo.png'
 import provisorio from '../../assets/provisorio.png'
-import Input from '../Input'
+import Input from '../Home/AutoComplete'
 import { twMerge } from 'tailwind-merge'
 
 const hover = 'cursor-pointer transition duration-200 hover:opacity-70'
