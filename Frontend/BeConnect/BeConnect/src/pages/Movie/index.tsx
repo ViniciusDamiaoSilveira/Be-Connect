@@ -1,6 +1,6 @@
 import HeaderMobile from "../../components/HeaderMobile";
 import HeaderPC from "../../components/HeaderPC";
-import Informations from "../../components/Movie/Informations";
+import Informations from "../../components/Movie/Background";
 
 export default function Movie() {
     return(

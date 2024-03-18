@@ -25,7 +25,8 @@ export default {
         '70' : '16.5rem',
         '76' : '19rem',
         '85' : '21rem',
-        '90' : '22rem'
+        '90' : '22rem',
+        '100' : '25rem'
       },
       fontSize: {
         '3.5xl' : '2rem' 

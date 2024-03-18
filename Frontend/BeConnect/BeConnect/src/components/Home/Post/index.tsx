@@ -1,5 +1,6 @@
 import { Heart, Share2 } from 'lucide-react';
 import { Rating } from 'primereact/rating';
+import './index.css'
 
 interface PostProps {
     name?: string,
@@ -24,7 +25,7 @@ export default function Post( props : PostProps) {
                     </div>
                 </div>
 
-                <Rating className='text-yellow gap-1 mr-5 mt-5' value={3} stars={3} readOnly cancel={false} />
+                <Rating className='text-yellow rating gap-1 mr-5 mt-5' value={3} stars={3} readOnly cancel={false} />
             </div>
             
             <div className='mt-10 ml-5 mr-5 text-white font-normal'> 
@@ -34,11 +35,11 @@ export default function Post( props : PostProps) {
             </div>
 
             <div className='mt-5 ml-5 mb-3 flex justify-between'>
-                <div className='text-white text-sm flex items-center gap-2 cursor-pointer hover:opacity-70 duration-300'>
-                    <Heart size={19}/> 23mil
+                <div className='text-white text-sm flex gap-2 cursor-pointer hover:opacity-70 duration-300'>
+                    <Heart className='h-5'/> 23mil
                 </div>
 
-                <Share2 size={19} className='mr-5 text-white cursor-pointer hover:opacity-70 duration-300'/>
+                <Share2 className='mr-5 h-5 text-white cursor-pointer hover:opacity-70 duration-300'/>
             </div>
 
         </div>

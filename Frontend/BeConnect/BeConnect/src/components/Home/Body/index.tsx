@@ -7,7 +7,7 @@ export default function Body() {
             <div className="w-full h-16 flex justify-between items-center"> 
                 
                 <div className="flex items-center gap-2 text-white hover:text-yellow duration-300 cursor-pointer"> 
-                    <Plus size={20}/>
+                    <Plus className="w-5"/>
                     <span> Novo Post </span>
                 </div>
 

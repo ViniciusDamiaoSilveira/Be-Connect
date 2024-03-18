@@ -11,25 +11,25 @@ export default function Navigator() {
         <div className="w-70 h-70 flex flex-col justify-center gap-3 bg-gray rounded-lg ml-8 mt-8">
             <NavLink to={'/'} className={CustomNav}> 
                 <NavLink to={'/'} className={CustomDiv}></NavLink>
-                <Clapperboard className="ml-5" size={19}/>
+                <Clapperboard className="ml-5 h-5"/>
                 <span className="text-base font-semibold"> Filmes </span> 
             </NavLink>
 
             <NavLink to={'/Series'} className={CustomNav}> 
                 <NavLink to={'/Series'} className={CustomDiv}></NavLink>
-                <Tv2 className="ml-5" size={19}/>
+                <Tv2 className="ml-5 h-5"/>
                 <span className="font-semibold"> Séries </span>
             </NavLink>
 
             <NavLink to={'/Games'} className={CustomNav}> 
                 <NavLink to={'/Games'} className={CustomDiv}></NavLink>
-                <Gamepad className="ml-5" size={19}/>
+                <Gamepad className="ml-5 h-5"/>
                 <span className="font-semibold"> Jogos </span> 
             </NavLink>
 
             <NavLink to={'/Books'} className={CustomNav}> 
                 <NavLink to={'/Books'} className={CustomDiv}></NavLink>
-                <BookOpen className="ml-5" size={19}/>
+                <BookOpen className="ml-5 h-5"/>
                 <span className="font-semibold"> Livros </span> 
             </NavLink>
         </div>

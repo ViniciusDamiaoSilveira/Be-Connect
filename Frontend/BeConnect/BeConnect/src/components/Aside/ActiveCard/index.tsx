@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 import { register } from 'swiper/element/bundle';
 
 const tmdbURL = import.meta.env.VITE_TMDB_API
@@ -62,12 +63,27 @@ export default function ActiveCard() {
   }
 
   useEffect(() => {
-    getListMovies()    
+    getListMovies()  
   }, [])
+
+  console.log(listMovies);
+  
 
     return(
 
         <div className="w-70 h-auto items-center rounded-lg ml-8 mb-5 shadow-lg"> 
+          
+          {
+            listMovies.length === 0 && (
+              <div className='w-70 h-96 bg-gray rounded-md flex justify-center items-center'> 
+                <ClipLoader
+                  color="#FFFFFF"
+                  size={30}
+                  speedMultiplier={0.6}
+                  /> 
+              </div>
+            )
+          }
           <swiper-container ref={swiperRef} init="false"> 
             {
               listMovies.length > 0 && 
