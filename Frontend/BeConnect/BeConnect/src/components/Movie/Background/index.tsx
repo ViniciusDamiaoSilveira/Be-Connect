@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Bookmark, Calendar, Clock } from 'lucide-react';
 import Informations from '../Informations';
+import Hotbar from '../Hotbar';
 
 const tmdbURL = import.meta.env.VITE_TMDB_API
 const bearer = import.meta.env.VITE_TMDB_BEARER
@@ -41,7 +42,7 @@ export default function Background() {
         setTimeout(() => {
           getMovie()
           setLastID(id)
-        }, 5000);
+        }, 1000000);
       }, [id == lastID])
 
       useEffect(() => {
@@ -52,10 +53,37 @@ export default function Background() {
       }, [movie])
 
     console.log(movie)
+    console.log(genres);
+    
 
 
     return (
         <div>
+            {movie === undefined && (
+              <div className='w-full h-100 relative'>
+              <div
+                style={{backgroundImage: `url(${imgURL + movie?.backdrop_path})`}} 
+                className='w-screen h-full bg-cover bg-center bg-no-repeat blur opacity-40 -z-10 absolute'>
+              </div>
+            
+              <div className="w-full h-full flex items-end">
+                <div 
+                    style={{ backgroundImage: `url(${imgURL + movie?.poster_path})` }}
+                    className="w-56 h-85 mb-3 bg-cover bg-no-repeat ml-8">
+                </div>
+
+                <Informations 
+                    title={''} 
+                    value={0} 
+                    overview={''} 
+                    loading={true}
+                    /> 
+
+                </div>
+              </div>
+            )
+
+            }
             {movie && (
               <div className='w-full h-100 relative'>
                 <div
@@ -70,50 +98,21 @@ export default function Background() {
                   </div>
 
                   <Informations 
-                  title={movie.title} 
-                  value={5} 
-                  overview={movie.overview} /> 
+                      title={movie.title} 
+                      value={5} 
+                      overview={movie.overview} /> 
 
                 </div>
               </div>
             )}
-          <div className='h-20 flex w-full mt-3'> 
-            <button className='w-56 h-14 flex justify-center gap-2 items-center text-white border-yellow border-2 ml-8'> 
-              <Bookmark className='h-5' size={18} strokeWidth={1.5} />
-                Adicionar a lista 
-            </button>
             
-            { genres?.length === 1 && (
-              <div className='ml-8 px-4 h-9 flex items-center rounded-md border-white border-2 text-white'> {genres[0].name} </div>
+            {genres && (
+              <Hotbar
+                date={movie.release_date.split('-')[0]}
+                genres={genres}
+                runtime={movie.runtime}
+              />
             )}
-
-            { genres?.length > 1 && (
-              <div className='ml-8 px-4 h-9 flex items-center rounded-md border-white border-2 text-white'> {genres[0].name} / {genres[1].name} </div>
-            )}
-
-            {movie && (
-              <div>
-                <div className='h-9 flex items-center text-white'> 
-                  <Clock strokeWidth={1.5} className='h-5'/>
-                  {movie.runtime} min 
-                </div>
-
-                <div className='text-white flex'>
-                  <Calendar strokeWidth={1}/>
-                  {movie.release_date.split('-')[0]}
-                </div>
-              </div>
-            )}
-
-          </div>
-
         </div>
-
     )
 }
-
-              
-
-            
-         
-          // </div>

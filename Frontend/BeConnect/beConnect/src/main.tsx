@@ -1,4 +1,4 @@
-import React from 'react'
+
 import ReactDOM from 'react-dom/client'
 import {
   createBrowserRouter,
@@ -7,6 +7,8 @@ import {
 import './index.css'
 import Home from './pages/Home';
 import Movie from './pages/Movie';
+import 'react-loading-skeleton/dist/skeleton.css'
+
 
 declare module "react" {
   namespace JSX {

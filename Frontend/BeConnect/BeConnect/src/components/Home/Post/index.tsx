@@ -25,7 +25,7 @@ export default function Post( props : PostProps) {
                     </div>
                 </div>
 
-                <Rating className='text-yellow rating gap-1 mr-5 mt-5' value={3} stars={3} readOnly cancel={false} />
+                <Rating className='text-yellow rating gap-1 mr-5 mt-5' value={5} stars={5} readOnly cancel={false} />
             </div>
             
             <div className='mt-10 ml-5 mr-5 text-white font-normal'> 
