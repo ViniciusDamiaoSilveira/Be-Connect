@@ -21,12 +21,16 @@ export default {
     extend: {
       spacing: {
         '1' : '0.15rem',
+        '30' : '7.3rem',
+        '58' : '14.3rem',
         '62' : '15.8rem',
         '70' : '16.5rem',
         '76' : '19rem',
+        '83' : '20.8rem',
         '85' : '21rem',
         '90' : '22rem',
-        '100' : '25rem'
+        '100' : '25rem',
+        '115' : '40rem'
       },
       fontSize: {
         '3.5xl' : '2rem' 
