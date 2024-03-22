@@ -8,6 +8,8 @@ import './index.css'
 import Home from './pages/Home';
 import Movie from './pages/Movie';
 import 'react-loading-skeleton/dist/skeleton.css'
+import Profile from './pages/Profile';
+import Login from './pages/Login';
 
 
 declare module "react" {
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
     element: <Home/>,
   },
   {
+    path: 'Login',
+    element: <Login/>
+  },
+  {
     path: "/Series",
     element: <Home/>,
   },
@@ -40,7 +46,12 @@ const router = createBrowserRouter([
   {
     path: '/Movie/:id',
     element: <Movie/>
-  }
+  },
+  {
+    path: 'Profile/:id',
+    element: <Profile/>
+  },
+
 ]);
 
 

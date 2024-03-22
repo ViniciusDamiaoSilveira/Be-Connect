@@ -142,6 +142,7 @@ export default function Background() {
                 <Post/>
               </div>
             )}
+            
               
         </div>
     )
