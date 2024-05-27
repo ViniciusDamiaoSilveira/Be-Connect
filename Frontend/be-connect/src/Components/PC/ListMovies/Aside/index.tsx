@@ -1,16 +1,21 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import Accordion from '@mui/material/Accordion';
+import AccordionActions from '@mui/material/AccordionActions';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Radio from '@mui/material/Radio';
+
 
 const tmdbURL = import.meta.env.VITE_TMDB_API
 const bearer = import.meta.env.VITE_TMDB_BEARER
 
-interface AsideProps {
-    genre: string,
-}
-
-export default function Aside({}) {
+export default function Aside({handleGenre} : any) {
     const [list_genres, setListGenres] = useState<Array<any>>([])
-    const [genre, setGenre] = useState('')
+    let id_genre = ''
     
     async function getListGenres() {
         try {
@@ -27,9 +32,7 @@ export default function Aside({}) {
                 a.name.localeCompare(b.name))
           
           setListGenres(genresAscending)
-          
-          
-          
+        
         } catch (error) {
           console.log(error);
         }
@@ -39,27 +42,33 @@ export default function Aside({}) {
         getListGenres()
     }, [])
 
-    return (
-        <div>
-            <div className="w-80 h-70 bg-gray ml-8 mt-8 rounded-md">
-                <h1 className="text-lg text-white ml-5"> Categoria </h1>
 
-                {
-                    list_genres.map((genre) => (
-                        <div key={genre.id}>
-                            <label className="ml-5 text-white"> 
-                                <input 
-                                    type="radio" 
-                                    name="checkmark"
-                                    className="accent-yellow"
-                                    />
-                                <span 
-                                    className="checkmark"></span> {genre.name}
-                            </label>
-                        </div>
-                    ))
-                }
-            </div>
+    return (
+        <div className="w-70 m-">
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon style={{color : '#F1F1F1'}}/>}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                    style={{ backgroundColor : '#2C2C2C'}}
+                >
+                <h1 className="text-white"> Categorias </h1>
+                </AccordionSummary>
+                <AccordionDetails style={{ backgroundColor : '#2C2C2C'}}>
+                    <RadioGroup name="use-radio-group" onChange={(event) => handleGenre((event.target as HTMLInputElement).value)}>
+                        {
+                            list_genres.length > 0 && ( 
+                                list_genres.map((genre) => (
+                                    <div className="text-white" key={genre.id}>
+                                        <FormControlLabel value={genre.id} label={genre.name} control={
+                                        <Radio sx={{color: '#F1F1F1', '&.Mui-checked': {color: '#FFBF15'}}}/>} />
+                                    </div>
+                                ))
+                            )
+                        } 
+                    </RadioGroup>
+                </AccordionDetails>
+            </Accordion>
         </div>
     )
 }

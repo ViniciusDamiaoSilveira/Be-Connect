@@ -1,6 +1,6 @@
 // import function to register Swiper custom elements
 import { register } from 'swiper/element/bundle';
-import estreia from '../../../../assets/poster_garra_ferro.jpg'
+import recente from '../../../../assets/poster_garra_ferro.jpg'
 import emAlta from '../../../../assets/poster_duna_2.jpg'
 import populares from '../../../../assets/poster_oppenheimer.jpg'
 import categories from '../../../../assets/categories.webp'
@@ -44,9 +44,9 @@ export default function Slider() {
         <div className='h-fit mt-8 ml-8 mr-8 overflow-x-hidden'>
             <swiper-container ref={swiperRef} init="false">
                 <swiper-slide>
-                    <NavLink to={'/Filmes/Estreias'} className={slide}> 
-                        <img src={estreia} className='opacity-50 rounded-md'/>
-                        <span className='ml-10 font-bold lg:text-lg xl:text-xl absolute'> ESTREIAS </span>
+                    <NavLink to={'/Filmes/Recentes'} className={slide}> 
+                        <img src={recente} className='opacity-50 rounded-md'/>
+                        <span className='ml-10 font-bold lg:text-lg xl:text-xl absolute'> RECENTES </span>
                     </NavLink>
                 </swiper-slide>
 

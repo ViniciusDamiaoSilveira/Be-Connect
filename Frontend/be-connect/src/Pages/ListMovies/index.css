@@ -1,0 +1,80 @@
+.page-item {
+    
+}
+.page-item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    background-color: #2C2C2C;
+}
+
+.page-link {
+    padding: 50%;
+}
+
+.page-item:hover {
+    background-color: #FFBF15;
+    color: black;
+}
+
+.next {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    background-color: #2C2C2C;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.next-link {
+    padding: 15%;
+}
+
+.next:hover {
+    background-color: #FFBF15;
+    color: black;
+}
+
+.previous {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    background-color: #2C2C2C;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.previous-link {
+    padding: 15%;
+}
+
+.previous:hover {
+    background-color: #FFBF15;
+    color: black;
+}
+
+.break {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+}
+
+.active-link {
+    background-color: #FFBF15;
+    color: black;
+}
+
+.rating-movie svg {
+    width: 20px;
+    height: 20px;
+}

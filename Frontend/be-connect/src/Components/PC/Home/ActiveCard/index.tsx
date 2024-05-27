@@ -66,9 +66,6 @@ export default function ActiveCard() {
     getListMovies()  
   }, [])
 
-  console.log(listMovies);
-  
-
     return(
 
         <div className="w-70 h-auto items-center rounded-lg ml-8 mb-5 shadow-lg mt-8"> 
