@@ -36,35 +36,72 @@ export default function ListMovies() {
     function handlePageClick(event: Event) {
       setListMovies([])
       getMoviesByType(type!, event.selected + 1, id_genre)
-      setCurrentPage(1)
+      setCurrentPage(event.selected + 1)
     }
 
     async function getMoviesByType(type: string, page: number, genre?: string) {
       try {
-        let response = {}
-        
-          if (genre != null) {
-            response = await axios.get(`${tmdbURL}discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${page}&primary_release_year=2024&sort_by=popularity.desc&with_genres=${genre}`, {
+        let response = {}  
+       
+
+        if (type == 'Absolute-Cinema') {
+          if (genre != null && genre != '0') {
+            response = await axios.get(`${tmdbURL}discover/movie?language=pt-BR&page=${page}&sort_by=vote_average.desc&vote_average.gte=8&vote_count.gte=5000&with_genres=${genre}`, {
               headers: {
                     'Authorization' : 'Bearer ' + bearer,
                   }
                 })
           } else {
-            response = await axios.get(`${tmdbURL}discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${page}&primary_release_year=2024&sort_by=popularity.desc&`, {
+            response = await axios.get(`${tmdbURL}discover/movie?&language=pt-BR&page=${page}&sort_by=vote_average.desc&vote_average.gte=8&vote_count.gte=5000&`, {
               headers: {
                     'Authorization' : 'Bearer ' + bearer,
                   }
                 })
           }
+        } else if (type == 'Populares') {
+          if (genre != null && genre != '0') {
+            response = await axios.get(`${tmdbURL}discover/movie?language=pt-BR&page=${page}&sort_by=popularity.desc&vote_count.gte=3000&with_genres=${genre}`, {
+              headers: {
+                    'Authorization' : 'Bearer ' + bearer,
+                  }
+                })
+                console.log('a');
+                
+          } else {
+            response = await axios.get(`${tmdbURL}discover/movie?&language=pt-BR&page=${page}&sort_by=popularity.desc&vote_count.gte=3000&`, {
+              headers: {
+                    'Authorization' : 'Bearer ' + bearer,
+                  }
+                })
+          }
+          
+        }
+
+        
+
+          // if (genre != null && genre != '0') {
+          //   response = await axios.get(`${tmdbURL}discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${page}&primary_release_year=2024&sort_by=popularity.desc&with_genres=${genre}`, {
+          //     headers: {
+          //           'Authorization' : 'Bearer ' + bearer,
+          //         }
+          //       })
+          // } else {
+          //   response = await axios.get(`${tmdbURL}discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${page}&primary_release_year=2024&sort_by=popularity.desc&`, {
+          //     headers: {
+          //           'Authorization' : 'Bearer ' + bearer,
+          //         }
+          //       })
+          // }
 
           if (response.data.total_pages > 500) {
             setTotalPages(500)
           } else {
             setTotalPages(response.data.total_pages)
+            console.log(response.data.total_pages);
           }
             
-              setListMovies(response.data.results)
-              console.log(page);
+          setListMovies(response.data.results)
+          console.log(response);
               
               
         
@@ -76,9 +113,7 @@ export default function ListMovies() {
     const updateGenre = (id: string) => {
       setIdGenre(id)
       setListMovies([])
-      setCurrentPage(2)
-      console.log(currentPage);
-      
+      setCurrentPage(1)
       getMoviesByType(type!, 1, id)
     }
 
@@ -97,18 +132,20 @@ export default function ListMovies() {
                   <Categories/>
                 )
                }
+
                {
                 type != 'Categorias' && (
-                  <div className="w-full flex flex-col mt-10 mb-10">
+                  <div>
+                    <div className="w-full flex flex-col mt-10 mb-10">
                     <h1 className="ml-8 text-white font-bold text-3xl"> {type?.replace('-', ' ')} </h1>
                   </div>
-                )
-               }
+               
                 <div className="flex">
                     
                     { listMovies.length > 0 && (
                         <div className="w-10/12 flex flex-wrap gap-10 ml-8 mb-12">
-                          {listMovies.map((movie) => (
+                          {
+                            listMovies.map((movie) => (
                               <NavLink to={`/Filme/${movie.id}`} className="flex flex-col duration-300 hover:opacity-75 cursor-pointer">
                                   <img 
                                   src={`${imgURL + movie.poster_path}`} 
@@ -144,27 +181,32 @@ export default function ListMovies() {
                 </div>
 
 
-               <div className="w-full flex justify-center">
-                  <ReactPaginate className="flex gap-4 text-white decoration-white"
-                    previousLabel={'Anterior'}
-                    nextLabel={'Próximo'}
-                    breakLabel={'...'}
-                    pageCount={totalPages}
-                    pageRangeDisplayed={2}
-                    onPageChange={handlePageClick}
-                    forcePage={0}
-                    containerClassName={'pagination'}
-                    pageClassName={'page-item'}
-                    pageLinkClassName={'page-link'}
-                    previousClassName={'previous'}
-                    previousLinkClassName={'previous-link'}
-                    nextClassName={'next'}
-                    nextLinkClassName={'next-link'}
-                    breakClassName={'break'}
-                    breakLinkClassName={'break-link'}
-                    activeClassName={'active-link'} >
-                    </ReactPaginate>
-               </div>
+                <div className="w-full flex justify-center">
+                    <ReactPaginate className="flex gap-4 text-white decoration-white"
+                      previousLabel={'Anterior'}
+                      nextLabel={'Próximo'}
+                      breakLabel={'...'}
+                      pageCount={totalPages}
+                      pageRangeDisplayed={2}
+                      onPageChange={handlePageClick}
+                      containerClassName={'pagination'}
+                      pageClassName={'page-item'}
+                      pageLinkClassName={'page-link'}
+                      previousClassName={'previous'}
+                      previousLinkClassName={'previous-link'}
+                      nextClassName={'next'}
+                      nextLinkClassName={'next-link'}
+                      breakClassName={'break'}
+                      breakLinkClassName={'break-link'}
+                      activeClassName={'active-link'}
+                      renderOnZeroPageCount={null}
+                      forcePage={currentPage - 1}
+                       >
+                      </ReactPaginate>
+                </div>
+
+                  </div>
+                )}
             </div>
         </div>
     )

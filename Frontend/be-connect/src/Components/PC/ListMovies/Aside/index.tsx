@@ -55,7 +55,14 @@ export default function Aside({handleGenre} : any) {
                 <h1 className="text-white"> Categorias </h1>
                 </AccordionSummary>
                 <AccordionDetails style={{ backgroundColor : '#2C2C2C'}}>
-                    <RadioGroup name="use-radio-group" onChange={(event) => handleGenre((event.target as HTMLInputElement).value)}>
+
+                    <RadioGroup name="use-radio-group"
+                    defaultValue={0} 
+                    onChange={(event) => handleGenre((event.target as HTMLInputElement).value)}>
+                        <div className="text-white" key={0}>
+                            <FormControlLabel value={0} label={'Nenhuma'}  control={
+                            <Radio sx={{color: '#F1F1F1', '&.Mui-checked': {color: '#FFBF15'}}}/>} />
+                        </div>
                         {
                             list_genres.length > 0 && ( 
                                 list_genres.map((genre) => (
