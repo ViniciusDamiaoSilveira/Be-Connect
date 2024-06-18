@@ -16,6 +16,9 @@ const imgURL = import.meta.env.VITE_TMDB_IMG
 
 export default function ListMovies() {
 
+    let year: number = new Date().getFullYear()
+    let month: number = new Date().getMonth()
+
     let { type } = useParams()
 
     const [id_genre, setIdGenre] = useState('')
@@ -65,7 +68,6 @@ export default function ListMovies() {
                     'Authorization' : 'Bearer ' + bearer,
                   }
                 })
-                console.log('a');
                 
           } else {
             response = await axios.get(`${tmdbURL}discover/movie?&language=pt-BR&page=${page}&sort_by=popularity.desc&vote_count.gte=3000&`, {
@@ -75,23 +77,22 @@ export default function ListMovies() {
                 })
           }
           
+        } else {
+          if (genre != null && genre != '0') {
+            response = await axios.get(`${tmdbURL}discover/movie?language=pt-BR&page=${page}&sort_by=popularity.desc&primary_release_date.gte=${year}-${month - 1}-01&with_genres=${genre}`, {
+              headers: {
+                    'Authorization' : 'Bearer ' + bearer,
+                  }
+                })
+                
+          } else {
+            response = await axios.get(`${tmdbURL}discover/movie?&language=pt-BR&page=${page}&sort_by=popularity.desc&primary_release_date.gte=${year}-${month - 1}-01&`, {
+              headers: {
+                    'Authorization' : 'Bearer ' + bearer,
+                  }
+                })
+          }
         }
-
-        
-
-          // if (genre != null && genre != '0') {
-          //   response = await axios.get(`${tmdbURL}discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${page}&primary_release_year=2024&sort_by=popularity.desc&with_genres=${genre}`, {
-          //     headers: {
-          //           'Authorization' : 'Bearer ' + bearer,
-          //         }
-          //       })
-          // } else {
-          //   response = await axios.get(`${tmdbURL}discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${page}&primary_release_year=2024&sort_by=popularity.desc&`, {
-          //     headers: {
-          //           'Authorization' : 'Bearer ' + bearer,
-          //         }
-          //       })
-          // }
 
           if (response.data.total_pages > 500) {
             setTotalPages(500)
