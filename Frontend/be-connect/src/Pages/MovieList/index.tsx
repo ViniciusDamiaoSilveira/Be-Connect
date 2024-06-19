@@ -1,7 +1,7 @@
 import HeaderPC from "../../Components/PC/Header";
 import { NavLink, useParams } from "react-router-dom";
 import Categories from "../../Components/PC/Categories";
-import Aside from "../../Components/PC/ListMovies/Aside";
+import AsideGenre from "../../Components/PC/AsideGenre";
 import { SetStateAction, useEffect, useState } from "react";
 import axios from "axios";
 import './index.css'
@@ -177,7 +177,7 @@ export default function ListMovies() {
                     }
 
                     <div className="mr-8">
-                      <Aside handleGenre={updateGenre}/>
+                      <AsideGenre handleGenre={updateGenre}/>
                     </div>
                 </div>
 

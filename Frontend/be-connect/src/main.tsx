@@ -6,8 +6,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from './Pages/Home';
-import Movie from './Pages/Movies';
-import ListMovies from './Pages/ListMovies';
+import Movie from './Pages/Movie';
+import ListMovies from './Pages/MovieList';
+import ListMoviesGenre from './Pages/MoviesByGender';
 
 declare module "react" {
   namespace JSX {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/Filmes/:type",
     element: <ListMovies/>,
+  },
+  {
+    path: "/Filmes/:genreWrite/:genre",
+    element: <ListMoviesGenre/>,
   },
 ]);
 

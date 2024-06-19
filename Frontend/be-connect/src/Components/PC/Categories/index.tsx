@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Cards from "./Cards"
+import { NavLink } from "react-router-dom"
 
 const tmdbURL = import.meta.env.VITE_TMDB_API
 const bearer = import.meta.env.VITE_TMDB_BEARER
@@ -43,7 +44,9 @@ export default function Categories() {
                     list_genres.length > 0 && (
                         <div className="flex justify-center gap-10 flex-wrap mt-10 ">
                             {list_genres.map((genre) => ( 
+                                <NavLink to={'/Filmes/' + genre.name + '/' + genre.id}>
                                     <Cards key={genre.name} name={genre.name} genre={genre.name}/>
+                                </NavLink>
                             ))}
                         </div>
                     )

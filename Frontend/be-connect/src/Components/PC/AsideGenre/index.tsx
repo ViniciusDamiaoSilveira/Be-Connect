@@ -1,8 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Accordion from '@mui/material/Accordion';
-import AccordionActions from '@mui/material/AccordionActions';
-import AccordionSummary from '@mui/material/AccordionSummary';
+ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -13,7 +12,7 @@ import Radio from '@mui/material/Radio';
 const tmdbURL = import.meta.env.VITE_TMDB_API
 const bearer = import.meta.env.VITE_TMDB_BEARER
 
-export default function Aside({handleGenre} : any) {
+export default function AsideGenre({handleGenre} : any) {
     const [list_genres, setListGenres] = useState<Array<any>>([])
     let id_genre = ''
     
